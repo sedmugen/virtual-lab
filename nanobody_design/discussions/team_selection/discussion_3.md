@@ -18,28 +18,28 @@ Principal Investigator, please provide your response to the agenda.
 
 ## Principal Investigator
 
-To effectively tackle the challenge of developing antibodies or nanobodies for the newest variant of the SARS-CoV-2 spike protein, I will assemble a team of experts with complementary skills in computational biology, virology, and antibody engineering. Here is the proposed team:
+To effectively tackle the challenge of developing antibodies or nanobodies against the newest variant of the SARS-CoV-2 spike protein, I propose assembling a multidisciplinary team with complementary expertise. Here are the team members I would like to invite to the discussion:
 
-1. **Agent(
+1. **Agent**(
+    title="Structural Biologist",
+    expertise="protein structure analysis and molecular docking",
+    role="analyze the structural features of the SARS-CoV-2 spike protein and guide the design of antibody/nanobody binding",
+    goal="ensure that the designed antibodies/nanobodies effectively target and neutralize the spike protein, including potential cross-reactivity with past and minor variants",
+)
+
+2. **Agent**(
     title="Computational Biologist",
-    expertise="computational modeling and bioinformatics",
-    goal="develop models to predict antibody and nanobody interactions with the SARS-CoV-2 spike protein",
-    role="utilize machine learning techniques to identify potential binding sites and design optimized sequences"
-)**
+    expertise="bioinformatics and machine learning model development",
+    role="develop machine learning models to predict antibody/nanobody binding efficacy and specificity",
+    goal="apply machine learning approaches to optimize the design process for high affinity and broad-spectrum activity",
+)
 
-2. **Agent(
-    title="Virologist",
-    expertise="viral evolution and spike protein mutations",
-    goal="understand the implications of spike protein variants on antibody binding",
-    role="provide insights into the current and emerging variants and validate computational predictions with biological assays"
-)**
+3. **Agent**(
+    title="Immunologist",
+    expertise="antibody generation and immune response analysis",
+    role="provide insights into the immune response and validation of antibody/nanobody function in vitro and in vivo",
+    goal="ensure that the designed antibodies/nanobodies are biologically relevant and can elicit a robust immune response across different variants",
+)
 
-3. **Agent(
-    title="Antibody Engineer",
-    expertise="antibody and nanobody design and optimization",
-    goal="engineer antibodies or nanobodies with enhanced binding affinity and broad reactivity",
-    role="apply protein engineering techniques to develop candidates with desired properties and guide experimental validation"
-)**
-
-These team members will be crucial for integrating computational predictions with biological insights and engineering expertise to design effective antibodies or nanobodies.
+This team brings together critical expertise in structural biology, computational methods, and immunology, which are essential for the successful design and development of effective antibodies or nanobodies against SARS-CoV-2.
 

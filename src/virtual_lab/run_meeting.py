@@ -4,8 +4,11 @@ import time
 from pathlib import Path
 from typing import Literal
 
+from dotenv import load_dotenv
 from openai import OpenAI
 from tqdm import trange, tqdm
+
+load_dotenv()
 
 from virtual_lab.agent import Agent
 from virtual_lab.constants import CONSISTENT_TEMPERATURE, PUBMED_TOOL_DESCRIPTION

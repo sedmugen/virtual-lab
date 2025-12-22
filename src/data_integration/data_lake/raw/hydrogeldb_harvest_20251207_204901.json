@@ -1,0 +1,44 @@
+[
+  {
+    "oai_identifier": "oai:hydrogeldb.org:HG001",
+    "title": [
+      "Poly(ethylene glycol) diacrylate hydrogel for tissue engineering"
+    ],
+    "creator": [
+      "Smith, J.; Doe, A."
+    ],
+    "subject": [
+      "PEG-DA; Hydrogel; Tissue Engineering"
+    ],
+    "description": [
+      "Details on synthesis and characterization of PEG-DA hydrogels. Includes mechanical properties and degradation rates."
+    ],
+    "date": [
+      "2023-01-10"
+    ],
+    "identifier": [
+      "doi:10.1016/j.biomaterials.2023.01.001"
+    ]
+  },
+  {
+    "oai_identifier": "oai:hydrogeldb.org:HG002",
+    "title": [
+      "Alginate hydrogels for cell encapsulation"
+    ],
+    "creator": [
+      "Johnson, K.; Lee, B."
+    ],
+    "subject": [
+      "Alginate; Hydrogel; Cell Encapsulation"
+    ],
+    "description": [
+      "Study on alginate-based hydrogels, focusing on gelation kinetics and cell viability."
+    ],
+    "date": [
+      "2023-02-15"
+    ],
+    "identifier": [
+      "doi:10.1002/advmat.20230005"
+    ]
+  }
+]

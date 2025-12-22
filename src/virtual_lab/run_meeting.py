@@ -7,10 +7,10 @@ from typing import Literal
 from openai import OpenAI
 from tqdm import trange, tqdm
 
-from virtual_lab import api_key as API
-from virtual_lab.agent import Agent
-from virtual_lab.constants import CONSISTENT_TEMPERATURE, PUBMED_TOOL_DESCRIPTION
-from virtual_lab.prompts import (
+from . import config
+from .agent import Agent
+from .constants import CONSISTENT_TEMPERATURE, PUBMED_TOOL_DESCRIPTION
+from .prompts import (
     individual_meeting_agent_prompt,
     individual_meeting_critic_prompt,
     individual_meeting_start_prompt,
@@ -21,7 +21,7 @@ from virtual_lab.prompts import (
     team_meeting_team_lead_final_prompt,
     team_meeting_team_member_prompt,
 )
-from virtual_lab.utils import (
+from .utils import (
     convert_messages_to_discussion,
     count_discussion_tokens,
     count_tokens,
@@ -49,7 +49,7 @@ def run_meeting(
     temperature: float = CONSISTENT_TEMPERATURE,
     pubmed_search: bool = False,
     return_summary: bool = False,
-) -> str:
+) -> str | None:
     """Runs a meeting with a LLM agents.
 
     :param meeting_type: The type of meeting.
@@ -97,25 +97,9 @@ def run_meeting(
     # and paste it here. The code will not work without a valid key.
 
     client = OpenAI(
-        base_url=API.OPENROUTER_BASE_URL,
-        api_key=API.OPENROUTER_API_KEY,
+        base_url=config.BASE_URL,
+        api_key=config.API_KEY,
     )
-
-    completion = client.chat.completions.create(
-    extra_headers={
-        "HTTP-Referer": "<YOUR_SITE_URL>", # Optional. Site URL for rankings on openrouter.ai.
-        "X-Title": "<YOUR_SITE_NAME>", # Optional. Site title for rankings on openrouter.ai.
-    },
-    extra_body={},
-    model="openai/gpt-oss-20b:free",
-    messages=[
-            {
-            "role": "user",
-            "content": "What is the meaning of life?"
-            }
-        ]
-    )
-    print(completion.choices[0].message.content)
 
     # Set up team
     if meeting_type == "team":
@@ -302,3 +286,5 @@ def run_meeting(
     # Optionally, return summary
     if return_summary:
         return get_summary(discussion)
+
+    return None

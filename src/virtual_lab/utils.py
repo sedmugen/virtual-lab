@@ -9,14 +9,14 @@ import tiktoken
 from openai import AsyncOpenAI, OpenAI
 from openai.types.beta.threads.run import Run
 
-from virtual_lab.constants import (
+from .constants import (
     DEFAULT_FINETUNING_EPOCHS,
     MODEL_TO_INPUT_PRICE_PER_TOKEN,
     MODEL_TO_OUTPUT_PRICE_PER_TOKEN,
     FINETUNING_MODEL_TO_TRAINING_PRICE_PER_TOKEN,
     PUBMED_TOOL_NAME,
 )
-from virtual_lab.prompts import format_references
+from .prompts import format_references
 
 
 def get_pubmed_central_article(
@@ -334,7 +334,7 @@ def compute_token_cost(
         model not in MODEL_TO_INPUT_PRICE_PER_TOKEN
         or model not in MODEL_TO_OUTPUT_PRICE_PER_TOKEN
     ):
-        raise ValueError(f'Cost of model "{model}" not known')
+        return 0.0
 
     return (
         input_token_count * MODEL_TO_INPUT_PRICE_PER_TOKEN[model]
@@ -354,15 +354,15 @@ def print_cost_and_time(
     print(f"Max token length: {token_counts['max']:,}")
 
     # Compute and print cost
-    try:
-        cost = compute_token_cost(
-            model=model,
-            input_token_count=token_counts["input"] + token_counts["tool"],
-            output_token_count=token_counts["output"],
-        )
+    cost = compute_token_cost(
+        model=model,
+        input_token_count=token_counts["input"] + token_counts["tool"],
+        output_token_count=token_counts["output"],
+    )
+    if cost > 0 or model in MODEL_TO_INPUT_PRICE_PER_TOKEN:
         print(f"Cost: ${cost:.2f}")
-    except ValueError as e:
-        print(f"Warning: {e}")
+    else:
+        print(f"Warning: Cost of model \"{model}\" not known")
 
     # Print time
     print(f"Time: {int(elapsed_time // 60)}:{int(elapsed_time % 60):02d}")

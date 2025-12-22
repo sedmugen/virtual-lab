@@ -51,9 +51,13 @@ def compute_log_likelihood_ratios(
     Returns:
         List[Tuple[int, str, str, float]]: A list of tuples containing position, original amino acid, mutated amino acid, and log-likelihood ratio.
     """
+    device = next(model.parameters()).device
     try:
-        encoded_input = tokenizer(seq, return_tensors="pt", add_special_tokens=True)
-        original_output = model(**encoded_input)
+        encoded_input = tokenizer(seq, return_tensors="pt", add_special_tokens=True).to(
+            device
+        )
+        with torch.no_grad():
+            original_output = model(**encoded_input)
 
         log_likelihoods = []
         amino_acids = "ACDEFGHIKLMNPQRSTVWY"
@@ -66,8 +70,9 @@ def compute_log_likelihood_ratios(
                 mutated_sequence = seq[: pos - 1] + aa + seq[pos:]
                 mutated_input = tokenizer(
                     mutated_sequence, return_tensors="pt", add_special_tokens=True
-                )
-                mutated_output = model(**mutated_input)
+                ).to(device)
+                with torch.no_grad():
+                    mutated_output = model(**mutated_input)
 
                 original_ll = original_output.logits[
                     0, pos, tokenizer.convert_tokens_to_ids(seq[pos - 1])
@@ -90,9 +95,13 @@ def compute_log_likelihood_ratios(
 def main():
     nanobody_sequence, top_n = parse_arguments()
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
     try:
-        print("Loading model and tokenizer...")
-        model = EsmForMaskedLM.from_pretrained("facebook/esm1b-t33_650M_UR50S")
+        print(f"Loading model and tokenizer on {device}...")
+        model = EsmForMaskedLM.from_pretrained("facebook/esm1b-t33_650M_UR50S").to(
+            device
+        )
         tokenizer = EsmTokenizer.from_pretrained("facebook/esm1b-t33_650M_UR50S")
     except Exception as e:
         print(

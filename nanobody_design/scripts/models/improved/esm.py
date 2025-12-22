@@ -70,9 +70,10 @@ def compute_log_likelihood_ratios(
     Returns:
         List[Tuple[int, str, str, float]]: A list of tuples containing position, original amino acid, mutated amino acid, and log-likelihood ratio.
     """
+    device = next(model.parameters()).device
     try:
         encoded_input = tokenizer(seq, return_tensors="pt", add_special_tokens=True).to(
-            "cuda"
+            device
         )
         with torch.no_grad():
             original_output = model(**encoded_input)
@@ -102,7 +103,7 @@ def compute_log_likelihood_ratios(
                 padding=True,
                 truncation=True,
                 add_special_tokens=True,
-            ).to("cuda")
+            ).to(device)
             with torch.no_grad():
                 mutated_outputs = model(**mutated_inputs)
 
@@ -127,10 +128,12 @@ def compute_log_likelihood_ratios(
 def main():
     csv_file, save_directory, top_n = parse_arguments()
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
     try:
-        print("Loading model and tokenizer...")
+        print(f"Loading model and tokenizer on {device}...")
         model = EsmForMaskedLM.from_pretrained("facebook/esm1b_t33_650M_UR50S").to(
-            "cuda"
+            device
         )
         tokenizer = EsmTokenizer.from_pretrained("facebook/esm1b_t33_650M_UR50S")
     except Exception as e:

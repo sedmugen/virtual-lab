@@ -1,0 +1,432 @@
+[
+  {
+    "material_id": "mp-1120447",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 0.37250966749999903,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.288019789495501,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1244933",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 0.34929145859999905,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.599954373928591,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1244971",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 0.31675151759999903,
+    "band_gap": 0.0030999999999990003,
+    "is_stable": false,
+    "density": 2.427656376577443,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1244990",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 0.36627406769999904,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.6634947554856963,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1245041",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 0.310314400899999,
+    "band_gap": 0.027599999999999004,
+    "is_stable": false,
+    "density": 2.431303226576872,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1245242",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 0.31691021609999803,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.435075657647642,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1403870",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 1.250752009999999,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.142906835476681,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-644693",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 0.41511927999999904,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.142906980650944,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-676011",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 0.44703532249999905,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.344581212497035,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-988210",
+    "formula": "Si",
+    "structure_symmetry": "P1",
+    "formation_energy_per_atom": 1.9596229937499992,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.142906835476681,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1079297",
+    "formula": "Si",
+    "structure_symmetry": "C2/m",
+    "formation_energy_per_atom": 0.08220610625000001,
+    "band_gap": 0.2735,
+    "is_stable": false,
+    "density": 2.231027796342244,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1204046",
+    "formula": "Si",
+    "structure_symmetry": "P4_2/nmc",
+    "formation_energy_per_atom": 0.178885465377357,
+    "band_gap": 0.15080000000000002,
+    "is_stable": false,
+    "density": 2.021832466823777,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1056579",
+    "formula": "Si",
+    "structure_symmetry": "I4/mmm",
+    "formation_energy_per_atom": 0.48407213000000104,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.336254210293773,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-999200",
+    "formula": "Si",
+    "structure_symmetry": "I4/mmm",
+    "formation_energy_per_atom": 0.11663319999999901,
+    "band_gap": 0.439799999999999,
+    "is_stable": false,
+    "density": 2.193771478683577,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-92",
+    "formula": "Si",
+    "structure_symmetry": "I4_1/amd",
+    "formation_energy_per_atom": 0.28873980000000005,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.119536545645218,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-571520",
+    "formula": "Si",
+    "structure_symmetry": "R-3",
+    "formation_energy_per_atom": 0.19694103500000001,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.573426300486528,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1199894",
+    "formula": "Si",
+    "structure_symmetry": "C2/c",
+    "formation_energy_per_atom": 0.128874325731708,
+    "band_gap": 0.998499999999999,
+    "is_stable": false,
+    "density": 2.041582038415872,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1202745",
+    "formula": "Si",
+    "structure_symmetry": "P-3m1",
+    "formation_energy_per_atom": 0.144239747241379,
+    "band_gap": 0.8932000000000001,
+    "is_stable": false,
+    "density": 1.977844080420144,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1094057",
+    "formula": "Si",
+    "structure_symmetry": "R-3m",
+    "formation_energy_per_atom": 0.517749729999999,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.3479997143102542,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1268191",
+    "formula": "Si",
+    "structure_symmetry": "P6/m",
+    "formation_energy_per_atom": 0.36004447499999903,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.864723958637294,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1196961",
+    "formula": "Si",
+    "structure_symmetry": "P6/mmm",
+    "formation_energy_per_atom": 0.11045900649999901,
+    "band_gap": 1.1285,
+    "is_stable": false,
+    "density": 2.012401165721983,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-34",
+    "formula": "Si",
+    "structure_symmetry": "P6/mmm",
+    "formation_energy_per_atom": 0.30530073,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.1795272036870372,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-10649",
+    "formula": "Si",
+    "structure_symmetry": "P6_3/mmc",
+    "formation_energy_per_atom": 0.512949795,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.363805589763085,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1120747",
+    "formula": "Si",
+    "structure_symmetry": "P6_3/mmc",
+    "formation_energy_per_atom": 0.453742336666665,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.935021069765347,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1203790",
+    "formula": "Si",
+    "structure_symmetry": "P6_3/mmc",
+    "formation_energy_per_atom": 0.08439319661764601,
+    "band_gap": 1.359999999999999,
+    "is_stable": false,
+    "density": 2.00791585028713,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-165",
+    "formula": "Si",
+    "structure_symmetry": "P6_3/mmc",
+    "formation_energy_per_atom": 0.013606870000000002,
+    "band_gap": 0.438899999999999,
+    "is_stable": false,
+    "density": 2.317290669455944,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1201492",
+    "formula": "Si",
+    "structure_symmetry": "Pa-3",
+    "formation_energy_per_atom": 0.121153145431034,
+    "band_gap": 1.010699999999999,
+    "is_stable": false,
+    "density": 1.9693213149399922,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-168",
+    "formula": "Si",
+    "structure_symmetry": "Ia-3",
+    "formation_energy_per_atom": 0.160020518749998,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.53092813115747,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1200830",
+    "formula": "Si",
+    "structure_symmetry": "I-43m",
+    "formation_energy_per_atom": 0.14326103524390202,
+    "band_gap": 1.073499999999999,
+    "is_stable": false,
+    "density": 1.9920572342568272,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-971661",
+    "formula": "Si",
+    "structure_symmetry": "I-43m",
+    "formation_energy_per_atom": 0.10747738456521701,
+    "band_gap": 1.372199999999999,
+    "is_stable": false,
+    "density": 2.113073015134004,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-971662",
+    "formula": "Si",
+    "structure_symmetry": "Pm-3n",
+    "formation_energy_per_atom": 0.09184994826086901,
+    "band_gap": 1.4428,
+    "is_stable": false,
+    "density": 2.033231711125001,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-27",
+    "formula": "Si",
+    "structure_symmetry": "Fm-3m",
+    "formation_energy_per_atom": 0.53156601,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.3422177369201362,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-149",
+    "formula": "Si",
+    "structure_symmetry": "Fd-3m",
+    "formation_energy_per_atom": 0.0,
+    "band_gap": 0.6105,
+    "is_stable": true,
+    "density": 2.312800253345134,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-16220",
+    "formula": "Si",
+    "structure_symmetry": "Fd-3m",
+    "formation_energy_per_atom": 0.393193089411763,
+    "band_gap": 0.5334000000000001,
+    "is_stable": false,
+    "density": 2.00607082485501,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1014212",
+    "formula": "Si",
+    "structure_symmetry": "Im-3m",
+    "formation_energy_per_atom": 0.525495500000001,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.364140332420601,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1072544",
+    "formula": "Si",
+    "structure_symmetry": "Im-3m",
+    "formation_energy_per_atom": 0.22239860833333203,
+    "band_gap": 0.1444,
+    "is_stable": false,
+    "density": 1.88413449553028,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1001113",
+    "formula": "Si",
+    "structure_symmetry": "Cmcm",
+    "formation_energy_per_atom": 0.48982796249999905,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.037093781943305,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1095269",
+    "formula": "Si",
+    "structure_symmetry": "Cmcm",
+    "formation_energy_per_atom": 0.11054831833333201,
+    "band_gap": 0.5013000000000001,
+    "is_stable": false,
+    "density": 2.154770179587084,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1204627",
+    "formula": "Si",
+    "structure_symmetry": "Cmcm",
+    "formation_energy_per_atom": 0.12913409456521602,
+    "band_gap": 1.521599999999999,
+    "is_stable": false,
+    "density": 2.005337972467486,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-2351841",
+    "formula": "Si",
+    "structure_symmetry": "Cmcm",
+    "formation_energy_per_atom": 0.44883388250000006,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 2.997685500438472,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1079649",
+    "formula": "Si",
+    "structure_symmetry": "Cmce",
+    "formation_energy_per_atom": 0.42791178374999905,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.191772611073461,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-109",
+    "formula": "Si",
+    "structure_symmetry": "Fmmm",
+    "formation_energy_per_atom": 0.29561939749999905,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.117831046882785,
+    "source": "Materials Project"
+  },
+  {
+    "material_id": "mp-1524805",
+    "formula": "Si",
+    "structure_symmetry": "Fmmm",
+    "formation_energy_per_atom": 0.6645676274999981,
+    "band_gap": 0.0,
+    "is_stable": false,
+    "density": 3.095993362015338,
+    "source": "Materials Project"
+  }
+]

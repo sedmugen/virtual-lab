@@ -1,0 +1,8 @@
+{
+  "source": "PubChem",
+  "cid": 2244,
+  "name": "2-acetyloxybenzoic acid",
+  "molecular_formula": "C9H8O4",
+  "connectivity_smiles": "CC(=O)OC1=CC=CC=C1C(=O)O",
+  "inchikey": "BSYNRYMUTXBXSQ-UHFFFAOYSA-N"
+}

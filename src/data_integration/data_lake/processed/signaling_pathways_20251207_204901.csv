@@ -1,0 +1,5 @@
+pathway_name,cell_line,stimulus,measured_gene,expression_change,technique,dataset_id,signaling_pathway_ontology_id
+MAPK Pathway,HEK293,EGF,FOS,2.5,RNA-Seq,SPP-001,GO:0000165
+NF-kB Pathway,RAW 264.7,LPS,TNFa,3.1,qPCR,SPP-002,GO:0016065
+PI3K-Akt Pathway,MCF7,Insulin,AKT1,-1.2,Western Blot,SPP-003,GO:0000300
+TGF-beta Pathway,A549,TGFB1,SMAD3,1.8,Microarray,SPP-004,GO:0007179

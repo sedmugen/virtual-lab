@@ -1,0 +1,5 @@
+bioink_type,cell_type,concentration_g_l,nozzle_diameter_um,print_speed_mm_s,temperature_c,viability_percentage,mechanical_strength_kpa,source_paper
+Alginate,HUVEC,20,200,5,25,92.5,50,Journal of Bioprinting 2023
+GelMA,Fibroblast,15,250,8,30,88.1,75,Biomaterials Science 2022
+Collagen,Osteoblast,10,150,3,37,95.2,30,Advanced Healthcare Materials 2024
+PEG-DA,Neural Stem Cells,30,100,2,22,85.0,120,Nature Biomedical Engineering 2023

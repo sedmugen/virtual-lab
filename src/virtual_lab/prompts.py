@@ -26,29 +26,6 @@ SYNTHESIS_PROMPT = "synthesize the points raised by each team member, make decis
 
 SUMMARY_PROMPT = "summarize the meeting in detail for future discussions, provide a specific recommendation regarding the agenda, and answer the agenda questions (if any) based on the discussion while strictly adhering to the agenda rules (if any)"
 
-MERGE_PROMPT = "Please read the summaries of multiple separate meetings about the same agenda. Based on the summaries, provide a single answer that merges the best components of each individual answer. Please use the same format as the individual answers. Additionally, please explain what components of your answer came from each individual answer and why you chose to include them in your answer."
-
-REWRITE_PROMPT = "This script needs to be improved. Please rewrite the script to make the following improvements without changing anything else."
-
-
-def create_merge_prompt(
-    agenda: str,
-    agenda_questions: tuple[str, ...] = (),
-    agenda_rules: tuple[str, ...] = (),
-) -> str:
-    """Creates a merge prompt for merging the best components of multiple separate meeting answers.
-
-    :param agenda: The original agenda for the separate meetings.
-    :param agenda_questions: The original agenda questions for the separate meetings.
-    :param agenda_rules: The original agenda rules for the separate meetings.
-    :return: The merge prompt.
-    """
-    return (
-        f"{MERGE_PROMPT}\n\n"
-        f"{format_agenda(agenda, intro='As a reference, here is the agenda from those meetings, which must be addressed here as well:')}"
-        f"{format_agenda_questions(agenda_questions, intro='As a reference, here are the agenda questions from those meetings, which must be answered here as well:')}"
-        f"{format_agenda_rules(agenda_rules, intro='As a reference, here are the agenda rules from those meetings, which must be followed here as well:')}"
-    )
 
 
 def summary_structure_prompt(has_agenda_questions: bool) -> str:
@@ -167,7 +144,7 @@ def team_meeting_start_prompt(
     contexts: tuple[str, ...] = (),
     num_rounds: int = 1,
 ) -> str:
-    """Generates the start prompt for a tean meeting.
+    """Generates the start prompt for a team meeting.
 
     :param team_lead: The team lead.
     :param team_members: The team members.
@@ -177,7 +154,7 @@ def team_meeting_start_prompt(
     :param summaries: The summaries of previous meetings.
     :param contexts: The contexts for the meeting.
     :param num_rounds: The number of rounds of discussion.
-    :return: The start prompt for the tean meeting.
+    :return: The start prompt for the team meeting.
     """
     return (
         f"This is the beginning of a team meeting to discuss your research project. "

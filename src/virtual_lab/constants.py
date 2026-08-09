@@ -22,31 +22,8 @@ MODEL_TO_OUTPUT_PRICE_PER_TOKEN = {
     "gpt-4o-mini-2024-07-18": 0.6 / 10**6,
     "o1-mini": 12 / 10**6,
     "o1-mini-2024-09-12": 12 / 10**6,
-    "glm-4-flash": 0.0,
+    "glm-4-flash": 0.0,  # Free tier; no per-token billing
 }
-
-FINETUNING_MODEL_TO_INPUT_PRICE_PER_TOKEN = {
-    "gpt-4o": 3.75 / 10**6,
-    "gpt-4o-2024-08-06": 3.75 / 10**6,
-    "gpt-4o-mini": 0.3 / 10**6,
-    "gpt-4o-mini-2024-07-18": 0.3 / 10**6,
-}
-
-FINETUNING_MODEL_TO_OUTPUT_PRICE_PER_TOKEN = {
-    "gpt-4o": 15 / 10**6,
-    "gpt-4o-2024-08-06": 15 / 10**6,
-    "gpt-4o-mini": 1.2 / 10**6,
-    "gpt-4o-mini-2024-07-18": 1.2 / 10**6,
-}
-
-FINETUNING_MODEL_TO_TRAINING_PRICE_PER_TOKEN = {
-    "gpt-4o": 25 / 10**6,
-    "gpt-4o-2024-08-06": 25 / 10**6,
-    "gpt-4o-mini": 3 / 10**6,
-    "gpt-4o-mini-2024-07-18": 3 / 10**6,
-}
-
-DEFAULT_FINETUNING_EPOCHS = 4
 
 CONSISTENT_TEMPERATURE = 0.2
 CREATIVE_TEMPERATURE = 0.8

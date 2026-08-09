@@ -1,93 +1,109 @@
-# src/virtual_lab/formulation_agent_demo.py
+"""Standalone demo of the Formulation Scientist agent querying the Data Lake.
+
+This script demonstrates how a Virtual Lab agent can use tool functions
+backed by the ``src/data_integration`` Data Lake to:
+
+1. Look up 3D bioprinting parameters for a target material.
+2. Suggest a hydrogel suitable for a given tissue-engineering application.
+
+Run directly::
+
+    python -m src.virtual_lab.formulation_agent_demo
+
+The Data Lake must be populated first::
+
+    python -m src.data_integration.main
+"""
 
 import os
-import sys
 from dotenv import load_dotenv
-
-# Add the project root to sys.path explicitly for standalone execution
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-sys.path.insert(0, project_root)
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Import the tools using a relative import from the current directory (src/virtual_lab/)
+# Import tools from the tools sub-package
 from .tools.formulation import search_bioprinting_params, suggest_hydrogel
 
-# Define a simplified Agent class locally to avoid any dependencies on the main package's import structure
-class Agent:
-    def __init__(self, title: str, expertise: str, goal: str, role: str, model: str) -> None:
-        self.title = title
-        self.expertise = expertise
-        self.goal = goal
-        self.role = role
-        self.model = model
+# Import the canonical Agent class
+from .agent import Agent
 
-    @property
-    def prompt(self) -> str:
-        return (
-            f"You are a {self.title}. "
-            f"Your expertise is in {self.expertise}. "
-            f"Your goal is to {self.goal}. "
-            f"Your role is to {self.role}."
-        )
 
-# Mocking an LLM interaction for the purpose of this demo
-# In the full system, this would use the OpenAI API and function calling.
 class FormulationAgentDemo:
-    def __init__(self):
-        # Define the persona using the existing Agent class structure
+    """Mock demonstration of a Formulation Scientist agent.
+
+    In the full system the agent would use the OpenAI function-calling API.
+    Here, intent is classified with simple keyword matching so the demo
+    runs without any API key.
+    """
+
+    def __init__(self) -> None:
         self.agent_persona = Agent(
             title="Formulation Scientist",
             expertise="Polymer chemistry, hydrogels, and 3D bioprinting",
             goal="Design a feasible delivery system for nanobodies",
             role="Recommend hydrogels and define printing parameters",
-            model="gpt-4o"
+            model="gpt-4o",
         )
         print(f"Initialized Agent: {self.agent_persona.title}")
         print(f"Context: {self.agent_persona.prompt}\n")
 
-    def run_task(self, user_query):
+    def run_task(self, user_query: str) -> None:
+        """Classify the query and invoke the appropriate Data Lake tool.
+
+        :param user_query: Natural-language question from the researcher.
+        """
         print(f"--- Receiving Query: '{user_query}' ---")
-        
-        # Simple keyword-based intent classification for this demo
-        # (Replacing full LLM function calling for speed/reliability in this test)
+
         response = ""
-        
+
         if "print" in user_query.lower() or "parameter" in user_query.lower():
-            # Extract material name (mock extraction)
+            # Extract a known material name from the query
             materials = ["Alginate", "GelMA", "PEG-DA", "Collagen"]
-            target_material = next((m for m in materials if m.lower() in user_query.lower()), None)
-            
+            target_material = next(
+                (m for m in materials if m.lower() in user_query.lower()), None
+            )
+
             if target_material:
-                print(f"[Agent Decision]: User is asking about bioprinting {target_material}. invoking tool 'search_bioprinting_params'வுகளை...")
+                print(
+                    f"[Agent Decision]: User is asking about bioprinting "
+                    f"{target_material}. Invoking tool 'search_bioprinting_params'..."
+                )
                 tool_output = search_bioprinting_params(target_material)
-                response = f"Based on the Data Lake, here is the protocol for {target_material}:\n{tool_output}"
+                response = (
+                    f"Based on the Data Lake, here is the protocol for "
+                    f"{target_material}:\n{tool_output}"
+                )
             else:
-                response = "I can help with bioprinting, but I need to know which material (Alginate, GelMA, etc.) you are interested in."
-                
+                response = (
+                    "I can help with bioprinting, but I need to know which material "
+                    "(Alginate, GelMA, etc.) you are interested in."
+                )
+
         elif "suggest" in user_query.lower() or "find" in user_query.lower():
-            # Extract application
-            print(f"[Agent Decision]: User is asking for a hydrogel suggestion. invoking tool 'suggest_hydrogel'...")
-            tool_output = suggest_hydrogel("tissue engineering") # Defaulting to tissue engineering for demo
-            response = f"Here are some hydrogels from our database suitable for tissue engineering:\n{tool_output}"
-            
+            print(
+                "[Agent Decision]: User is asking for a hydrogel suggestion. "
+                "Invoking tool 'suggest_hydrogel'..."
+            )
+            tool_output = suggest_hydrogel("tissue engineering")
+            response = (
+                "Here are some hydrogels from our database suitable for tissue "
+                f"engineering:\n{tool_output}"
+            )
+
         else:
-            response = "I am the Formulation Specialist. I can help you select hydrogels or find bioprinting parameters."
-            
+            response = (
+                "I am the Formulation Specialist. I can help you select hydrogels "
+                "or find bioprinting parameters."
+            )
+
         print(f"\n[Agent Response]:\n{response}")
 
+
 if __name__ == "__main__":
-    # Load env (though not strictly needed for this mock demo, good practice)
-    load_dotenv()
-    
-    # Instantiate the agent
     specialist = FormulationAgentDemo()
-    
-    # Run Scenario 1: Bioprinting Query
+
     specialist.run_task("What are the printing parameters for Alginate?")
-    
+
     print("-" * 30)
-    
-    # Run Scenario 2: Discovery Query
+
     specialist.run_task("Can you suggest a hydrogel for tissue engineering?")

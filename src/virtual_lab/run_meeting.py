@@ -111,10 +111,6 @@ def run_meeting(
     # Set up tools
     assistant_params = {"tools": [PUBMED_TOOL_DESCRIPTION]} if pubmed_search else {}
 
-    print("DEBUG team contents:")
-    for agent in team:
-        print(agent, type(agent))
-
     # Set up the assistants
     agent_to_assistant = {
         agent: client.beta.assistants.create(

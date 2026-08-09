@@ -1,3 +1,16 @@
+"""Agent tool functions for querying the materials science Data Lake.
+
+These functions wrap the processed CSV and JSON files produced by
+``src/data_integration/main.py`` and return natural-language summaries
+suitable for injection into an agent response.
+
+Functions
+---------
+search_bioprinting_params(material_name)
+    Look up 3D bioprinting parameters for a given material.
+suggest_hydrogel(application_type)
+    Suggest hydrogels from the harvested HydrogelDB metadata.
+"""
 # src/virtual_lab/tools/formulation.py
 
 import pandas as pd

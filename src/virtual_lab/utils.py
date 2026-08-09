@@ -302,6 +302,13 @@ def print_cost_and_time(
     model: str,
     elapsed_time: float,
 ) -> None:
+    """Print token counts, estimated USD cost, and elapsed time for a meeting.
+
+    :param token_counts: Dictionary with keys ``'input'``, ``'output'``,
+        ``'tool'``, and ``'max'`` containing token counts.
+    :param model: The model name used for cost lookup.
+    :param elapsed_time: Elapsed time in seconds.
+    """
     # Print token counts
     print(f"Input token count: {token_counts['input']:,}")
     print(f"Output token count: {token_counts['output']:,}")
@@ -317,11 +324,10 @@ def print_cost_and_time(
     if cost > 0 or model in MODEL_TO_INPUT_PRICE_PER_TOKEN:
         print(f"Cost: ${cost:.2f}")
     else:
-        print(f"Warning: Cost of model \"{model}\" not known")
+        print(f'Warning: Cost of model "{model}" not known')
 
     # Print time
     print(f"Time: {int(elapsed_time // 60)}:{int(elapsed_time % 60):02d}")
-
 
 
 def convert_messages_to_discussion(

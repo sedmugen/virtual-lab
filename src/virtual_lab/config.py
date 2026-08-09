@@ -1,66 +1,91 @@
+"""LLM provider configuration for Virtual Lab.
+
+Supports three providers selectable via ``ACTIVE_PROVIDER``:
+
+* ``"openai"``     — OpenAI official API (requires ``OPENAI_API_KEY``).
+* ``"openrouter"`` — OpenRouter proxy (requires ``OPENROUTER_API_KEY``).
+* ``"bigmodel"``   — BigModel / GLM-4-Flash, free tier available
+                     (requires ``BIGMODEL_API_KEY``).
+
+Change ``ACTIVE_PROVIDER`` below to switch providers. All keys are read
+from the ``.env`` file in the project root via python-dotenv.
+
+Exported module-level names
+---------------------------
+API_KEY      : str            Active API key.
+BASE_URL     : str | None     Provider base URL (None uses the client default).
+DEFAULT_MODEL: str            Default model name for the active provider.
+"""
+
 import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-# --- 1. Load Environment Variables ---
-# Automatically find the project root (3 levels up from this file)
-current_file_path = Path(__file__).resolve()
-project_root = current_file_path.parent.parent.parent
-env_path = project_root / '.env'
+# --- Load environment variables ---
+_project_root = Path(__file__).resolve().parent.parent.parent
+load_dotenv(dotenv_path=_project_root / ".env")
 
-# Load the .env file
-load_success = load_dotenv(dotenv_path=env_path)
-
-# --- 2. Define API Providers ---
-
-# Option A: BigModel / GLM-4 (Free)
+# --- API credentials (read from environment) ---
 BIGMODEL_API_KEY = os.getenv("BIGMODEL_API_KEY")
 BIGMODEL_BASE_URL = os.getenv("BIGMODEL_BASE_URL", "https://open.bigmodel.cn/api/paas/v4/")
 
-# Option B: OpenRouter
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 OPENROUTER_BASE_URL = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
 
-# Option C: OpenAI (Official)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL") # Optional, defaults to OpenAI's standard URL
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")  # None uses the SDK default
 
-# --- 3. Intelligent Selection Logic ---
-# You can change the 'provider' variable below to switch providers easily.
-# Options: "bigmodel", "openrouter", "openai"
-ACTIVE_PROVIDER = "openai" 
+# --- Active provider selection ---
+# Change this value to switch providers.
+ACTIVE_PROVIDER = "openai"
 
-if ACTIVE_PROVIDER == "bigmodel":
-    if not BIGMODEL_API_KEY:
-        raise ValueError("Error: BIGMODEL_API_KEY missing in .env")
-    API_KEY = BIGMODEL_API_KEY
-    BASE_URL = BIGMODEL_BASE_URL
-    DEFAULT_MODEL = "glm-4-flash"
-    print(f"🔧 Config: Using BigModel (GLM-4)")
 
-elif ACTIVE_PROVIDER == "openrouter":
-    if not OPENROUTER_API_KEY:
-        raise ValueError("Error: OPENROUTER_API_KEY missing in .env")
-    API_KEY = OPENROUTER_API_KEY
-    BASE_URL = OPENROUTER_BASE_URL
-    DEFAULT_MODEL = "gpt-4o" # Or whatever model you prefer on OpenRouter
-    print(f"🔧 Config: Using OpenRouter")
+def get_config() -> tuple[str, str | None, str]:
+    """Return ``(api_key, base_url, default_model)`` for the active provider.
 
-elif ACTIVE_PROVIDER == "openai":
-    if not OPENAI_API_KEY:
-        raise ValueError("Error: OPENAI_API_KEY missing in .env")
-    API_KEY = OPENAI_API_KEY
-    BASE_URL = OPENAI_BASE_URL # Can be None, client handles it
-    DEFAULT_MODEL = "gpt-4o"
-    print(f"🔧 Config: Using OpenAI")
+    Raises ``ValueError`` if the required API key for the selected provider
+    is not set in the environment.
 
-else:
-    raise ValueError(f"Unknown provider: {ACTIVE_PROVIDER}")
+    :return: A tuple of (api_key, base_url, default_model).
+    """
+    if ACTIVE_PROVIDER == "bigmodel":
+        if not BIGMODEL_API_KEY:
+            raise ValueError(
+                "BIGMODEL_API_KEY is not set. Add it to your .env file "
+                "(see .env.example)."
+            )
+        return BIGMODEL_API_KEY, BIGMODEL_BASE_URL, "glm-4-flash"
 
-# --- 4. Validation (Runs only if executed directly) ---
+    elif ACTIVE_PROVIDER == "openrouter":
+        if not OPENROUTER_API_KEY:
+            raise ValueError(
+                "OPENROUTER_API_KEY is not set. Add it to your .env file "
+                "(see .env.example)."
+            )
+        return OPENROUTER_API_KEY, OPENROUTER_BASE_URL, "gpt-4o"
+
+    elif ACTIVE_PROVIDER == "openai":
+        if not OPENAI_API_KEY:
+            raise ValueError(
+                "OPENAI_API_KEY is not set. Add it to your .env file "
+                "(see .env.example)."
+            )
+        return OPENAI_API_KEY, OPENAI_BASE_URL, "gpt-4o"
+
+    else:
+        raise ValueError(
+            f"Unknown provider: {ACTIVE_PROVIDER!r}. "
+            "Valid options are 'openai', 'openrouter', 'bigmodel'."
+        )
+
+
+# Resolve at import time so downstream modules can import these names directly.
+API_KEY, BASE_URL, DEFAULT_MODEL = get_config()
+
+
 if __name__ == "__main__":
-    print(f"Checking .env at: {env_path}")
-    print(f"Loaded successfully? {load_success}")
-    print(f"Active Key: {API_KEY[:5]}... (hidden)")
-    print(f"Active URL: {BASE_URL}")
-    print(f"Default Model: {DEFAULT_MODEL}")
+    key, url, model = get_config()
+    print(f"Provider : {ACTIVE_PROVIDER}")
+    print(f"Base URL : {url}")
+    print(f"Model    : {model}")
+    print(f"Key      : {key[:8]}... (truncated)")

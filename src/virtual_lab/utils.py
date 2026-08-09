@@ -6,14 +6,12 @@ from pathlib import Path
 
 import requests
 import tiktoken
-from openai import AsyncOpenAI, OpenAI
+from openai import OpenAI
 from openai.types.beta.threads.run import Run
 
 from .constants import (
-    DEFAULT_FINETUNING_EPOCHS,
     MODEL_TO_INPUT_PRICE_PER_TOKEN,
     MODEL_TO_OUTPUT_PRICE_PER_TOKEN,
-    FINETUNING_MODEL_TO_TRAINING_PRICE_PER_TOKEN,
     PUBMED_TOOL_NAME,
 )
 from .prompts import format_references
@@ -209,53 +207,10 @@ def get_messages(client: OpenAI, thread_id: str) -> list[dict]:
         last_message = messages[-1]
 
     # Verify all message content is length 1
-    assert all(len(message["content"]) == 1 for message in messages)
-
-    return messages
-
-
-async def async_get_messages(client: AsyncOpenAI, thread_id: str) -> list[dict]:
-    """Gets messages from a thread.
-
-    :param client: The async OpenAI client.
-    :param thread_id: The ID of the thread to get messages from.
-    :return: A list of messages.
-    """
-    # Set up
-    messages = []
-    last_message = None
-    params = {
-        "thread_id": thread_id,
-        "limit": 100,
-        "order": "asc",
-    }
-
-    # Get all messages from the thread page by page
-    while True:
-        # Set up params
-        if last_message is not None:
-            params["after"] = last_message["id"]
-        elif "after" in params:
-            del params["after"]
-
-        # Get messages
-        new_messages = [
-            message.to_dict()
-            async for message in client.beta.threads.messages.list(**params)
-        ]
-
-        # Append new messages
-        messages += new_messages
-
-        # Break if no more messages
-        if len(new_messages) < params["limit"]:
-            break
-
-        # Get last message
-        last_message = messages[-1]
-
-    # Verify all message content is length 1
-    assert all(len(message["content"]) == 1 for message in messages)
+    if not all(len(message["content"]) == 1 for message in messages):
+        raise ValueError(
+            "Unexpected message format: each message must have exactly one content block."
+        )
 
     return messages
 
@@ -367,23 +322,6 @@ def print_cost_and_time(
     # Print time
     print(f"Time: {int(elapsed_time // 60)}:{int(elapsed_time % 60):02d}")
 
-
-def compute_finetuning_cost(
-    model: str, token_count: int, num_epochs: int = DEFAULT_FINETUNING_EPOCHS
-) -> float:
-    """Computes the cost of fine-tuning a model.
-
-    :param model: The model that will be finetuned.
-    :param token_count: The number of training tokens for finetuning.
-    :param num_epochs: Number of finetuning epochs.
-    :return: The cost of finetuning.
-    """
-    if model not in FINETUNING_MODEL_TO_TRAINING_PRICE_PER_TOKEN:
-        raise ValueError(f'Cost of model "{model}" not known')
-
-    return (
-        token_count * FINETUNING_MODEL_TO_TRAINING_PRICE_PER_TOKEN[model] * num_epochs
-    )
 
 
 def convert_messages_to_discussion(

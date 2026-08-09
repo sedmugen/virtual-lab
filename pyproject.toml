@@ -18,6 +18,7 @@ requires-python = ">=3.10"
 dependencies = [
     "notebook",
     "openai",
+    "python-dotenv",
     "requests",
     "tiktoken",
     "tqdm",
@@ -49,10 +50,17 @@ nanobody-design = [
     "torch",
     "transformers",
 ]
+data-integration = [
+    "beautifulsoup4",
+    "emmet-core",
+    "mp-api",
+    "pubchempy",
+    "requests",
+]
 
 [tool.hatch.version]
 path = "src/virtual_lab/__about__.py"
 
 [project.urls]
-Homepage = "https://github.com/zou-group/virtual-lab"
-Issues = "https://github.com/zou-group/virtual-lab/issues"
+Homepage = "https://github.com/sedmugen/virtual-lab"
+Issues = "https://github.com/sedmugen/virtual-lab/issues"

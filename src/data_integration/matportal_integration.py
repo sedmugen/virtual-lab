@@ -1,3 +1,8 @@
+"""MatPortal API integration for Virtual Lab data pipeline.
+
+Retrieves ontology-aligned materials science concepts and property
+definitions from the MatPortal REST API.
+"""
 # src/data_integration/matportal_integration.py
 
 import requests
@@ -134,3 +139,4 @@ if __name__ == "__main__":
         print("  1. Obtain an API key from https://www.matportal.org/accounts/apikey")
         print("  2. Set it as an environment variable: set MATPORTAL_API_KEY=your_key_here")
         print("  3. Run: python src/data_integration/matportal_integration.py")
+

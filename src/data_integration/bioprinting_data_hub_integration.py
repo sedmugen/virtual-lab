@@ -1,3 +1,7 @@
+"""3D Bioprinting Data Hub integration for Virtual Lab data pipeline.
+
+Loads and cleans 3D bioprinting parameter data from local CSV exports.
+"""
 # src/data_integration/bioprinting_data_hub_integration.py
 
 import pandas as pd
@@ -87,3 +91,4 @@ if __name__ == "__main__":
     non_existent_df = load_bioprinting_data("non_existent_file.csv")
     if non_existent_df is None:
         print("Correctly handled non-existent file.")
+

@@ -1,3 +1,8 @@
+"""HydrogelDB metadata harvesting for Virtual Lab data pipeline.
+
+Simulates an OAI-PMH harvesting protocol to collect hydrogel metadata
+from a mock HydrogelDB endpoint.
+"""
 # src/data_integration/hydrogeldb_integration.py
 
 import requests
@@ -140,3 +145,4 @@ if __name__ == "__main__":
                 print(f"  {key}: {value}")
     else:
         print("\nNo data harvested or an error occurred.")
+

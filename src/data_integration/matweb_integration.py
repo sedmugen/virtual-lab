@@ -1,3 +1,8 @@
+"""MatWeb web scraping integration for Virtual Lab data pipeline.
+
+Scrapes mechanical and thermal material properties from MatWeb
+using BeautifulSoup.
+"""
 # src/data_integration/matweb_integration.py
 
 import requests
@@ -109,3 +114,4 @@ if __name__ == "__main__":
             print(details)
     else:
         print("No results found or connection failed.")
+

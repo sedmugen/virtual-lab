@@ -1,3 +1,8 @@
+"""PubChem REST API integration for Virtual Lab data pipeline.
+
+Retrieves canonical chemical identifiers and properties (CID, formula,
+SMILES, InChIKey) for a given compound name or PubChem CID.
+"""
 # src/data_integration/pubchem_integration.py
 
 import pubchempy as pcp
@@ -71,3 +76,4 @@ if __name__ == "__main__":
     invalid_cid_info = get_chemical_info(99999999999, 'cid') # Very large, unlikely CID
     if not invalid_cid_info:
         print("\nInvalid CID test passed (returned None).")
+

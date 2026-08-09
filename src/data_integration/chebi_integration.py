@@ -1,3 +1,8 @@
+"""ChEBI REST API integration for Virtual Lab data pipeline.
+
+Fetches chemical entity metadata (names, formulae, roles, ontology IDs)
+from the ChEBI (Chemical Entities of Biological Interest) database.
+"""
 # src/data_integration/chebi_integration.py
 
 import requests
@@ -115,3 +120,4 @@ if __name__ == "__main__":
     non_existent_entry = get_chebi_entry("CHEBI:9999999")
     if non_existent_entry is None:
         print("Test for non-existent ChEBI ID passed (returned None).")
+

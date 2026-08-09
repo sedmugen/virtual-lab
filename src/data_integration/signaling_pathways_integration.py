@@ -1,3 +1,7 @@
+"""Signaling Pathways Project integration for Virtual Lab data pipeline.
+
+Loads and cleans gene expression / cell signaling data from local CSV exports.
+"""
 # src/data_integration/signaling_pathways_integration.py
 
 import pandas as pd
@@ -85,3 +89,4 @@ if __name__ == "__main__":
     non_existent_df = load_signaling_pathways_data("non_existent_file.csv")
     if non_existent_df is None:
         print("Correctly handled non-existent file.")
+

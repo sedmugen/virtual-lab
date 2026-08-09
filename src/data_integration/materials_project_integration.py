@@ -1,3 +1,8 @@
+"""Materials Project API integration for Virtual Lab data pipeline.
+
+Fetches material summary data (structure, formation energy, band gap,
+stability, density) using the ``mp-api`` client.
+"""
 # src/data_integration/materials_project_integration.py
 
 import os
@@ -92,3 +97,4 @@ if __name__ == "__main__":
         print("To test this module, run:")
         print("  set MP_API_KEY=your_actual_api_key_here")
         print("  python src/data_integration/materials_project_integration.py")
+

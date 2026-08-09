@@ -1,3 +1,7 @@
+"""Orchestrator for the Virtual Lab data integration pipeline.
+
+Runs all database integrations in sequence and saves outputs to the Data Lake.
+"""
 # src/data_integration/main.py
 
 import os
@@ -110,3 +114,4 @@ if __name__ == "__main__":
     load_dotenv()
     
     orchestrate_integrations()
+

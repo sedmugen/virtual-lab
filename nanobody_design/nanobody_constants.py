@@ -4,8 +4,10 @@ import sys
 import os
 from pathlib import Path
 
-# Add src to sys.path to allow importing virtual_lab
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../src")))
+# Ensure virtual_lab is importable when running scripts directly
+src_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../src"))
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
 
 from virtual_lab.agent import Agent
 from virtual_lab.config import DEFAULT_MODEL

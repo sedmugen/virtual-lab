@@ -264,8 +264,7 @@ def run_meeting(
     # Add tool token count to total token count
     token_counts["tool"] = tool_token_count
 
-    # Print cost and time
-    # TODO: handle different models for different agents
+    # Print cost and time summary using the primary agent's model rate
     print_cost_and_time(
         token_counts=token_counts,
         model=team_lead.model if meeting_type == "team" else team_member.model,
